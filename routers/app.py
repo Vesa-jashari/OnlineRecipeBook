@@ -125,7 +125,7 @@ if selected_menu=="Dashboard":
             st.error("Failed to retrieve categories")
             selected_category_id=None
         if st.button("Add Recipe", key="add_recipe_button"):
-            if (all([recipe_name,recipe_ingredients,recipe_cuisine,recipe_instructions,recipe_difficulty,selected_category_id is not None]))
+            if (all([recipe_name,recipe_ingredients,recipe_cuisine,recipe_instructions,recipe_difficulty,selected_category_id is not None])):
                 create_recipes(recipe_name,recipe_description,recipe_ingredients,recipe_instructions,selected_category_id)
                 st.success(f"Recipe{recipe_name} added successfully")
             else:
@@ -145,18 +145,18 @@ if selected_menu=="Dashboard":
                     edit_ingredients = st.text_input("ingredients", value=selected_recipe["ingredients"], key="edit_recipe_ingredients")
                     edit_cuisine = st.text_input("cuisine", value=selected_recipe["cuisine"], key="edit_recipe_cuisine")
                     edit_instructions = st.text_input("instructions", value=selected_recipe["instructions"], key="edit_recipe_instructions")
-                    edit_difficulty=st.selectbox("Difficulty",["Easy","Medium","Hard"],index=["Easy","Medium","Hard"].index(selected_recipe["difficulty"]),key="edit_recipe_difficulty"
+                    edit_difficulty=st.selectbox("Difficulty",["Easy","Medium","Hard"],index=["Easy","Medium","Hard"].index(selected_recipe["difficulty"]),key="edit_recipe_difficulty")
                     category_list=get_categories()
                     if category_list:
                         category_names=[cat["name"] for cat in category_list]
-                        edit_category_name=st.selectbox("Category",category_names,index=category_name.index(next(cat["name"] for cat in category_list if cat ["id"]==selected_recipe["category_list"]))
+                        edit_category_name=st.selectbox("Category",category_names, index=category_names.index(next(cat["name"] for cat in category_list if cat ["id"]==selected_recipe["edit_category_list"])))
                         edit_recipe_id=next(cat["id"] for cat in category_list if cat["name"]==edit_category_name)
                     else:
                         st.error("Failed to retrieve categories")
                         edit_category_id=None
 
                     if st.button("Update recipe",key="update_recipe_button"):
-                         if all([edit_name,edit_instructions,edit_description.edit_ingredients)])
+                         if all([edit_name,edit_instructions,edit_description.edit_ingredients,edit_cuisine,edit_difficulty,edit_category_id is not None)])
 
 
                     else:
