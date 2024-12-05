@@ -10,7 +10,7 @@ load_dotenv()
 Api_base_url = os.getenv("api_base_url")
 
 
-# Utility Functions
+
 def get_categories():
     response = requests.get(f"{Api_base_url}/categories")
     if response.ok:
@@ -88,7 +88,7 @@ selected_menu = st.sidebar.selectbox("Menu", menu)
 if selected_menu == "Dashboard":
     st.header("Dashboard")
 
-    # Display Recipes
+
     st.subheader("Recipes")
     recipe_list = get_recipes()
     if recipe_list:
